@@ -131,11 +131,12 @@
         return this.prevOptions = $.extend(true, {}, this.options);
       };
 
-      BootstrapSwitch.prototype.state = function(value, skip) {
+      BootstrapSwitch.prototype.state = function(value, skip, force) {
+        console.log(force);
         if (typeof value === "undefined") {
           return this.options.state;
         }
-        if (this.options.disabled || this.options.readonly) {
+        if ((this.options.disabled || this.options.readonly) && !force) {
           return this.$element;
         }
         if (this.options.state && !this.options.radioAllOff && this.$element.is(":radio")) {
@@ -729,11 +730,11 @@
       radioAllOff: false,
       onColor: "primary",
       offColor: "default",
-      onText: "ON",
-      offText: "OFF",
+      onText: "",
+      offText: "",
       labelText: "&nbsp;",
-      handleWidth: "auto",
-      labelWidth: "auto",
+      handleWidth: "15px",
+      labelWidth: "15px",
       baseClass: "bootstrap-switch",
       wrapperClass: "wrapper",
       onInit: function() {},

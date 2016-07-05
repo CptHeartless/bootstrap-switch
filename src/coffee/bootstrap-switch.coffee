@@ -88,9 +88,10 @@ do ($ = window.jQuery, window) ->
     setPrevOptions: ->
       @prevOptions = $.extend(true, {}, @options)
 
-    state: (value, skip) ->
+    state: (value, skip, force) ->
+      console.log force
       return @options.state  if typeof value is "undefined"
-      return @$element  if @options.disabled or @options.readonly
+      return @$element  if (@options.disabled or @options.readonly) and !force
       return @$element  if @options.state and not @options.radioAllOff and @$element.is ":radio"
 
       if @$element.is ":radio"
@@ -542,11 +543,11 @@ do ($ = window.jQuery, window) ->
     radioAllOff: false
     onColor: "primary"
     offColor: "default"
-    onText: "ON"
-    offText: "OFF"
+    onText: ""
+    offText: ""
     labelText: "&nbsp;"
-    handleWidth: "auto"
-    labelWidth: "auto"
+    handleWidth: "15px"
+    labelWidth: "15px"
     baseClass: "bootstrap-switch"
     wrapperClass: "wrapper"
     onInit: ->
