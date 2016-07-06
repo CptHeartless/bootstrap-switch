@@ -132,7 +132,6 @@
       };
 
       BootstrapSwitch.prototype.state = function(value, skip, force) {
-        console.log(force);
         if (typeof value === "undefined") {
           return this.options.state;
         }

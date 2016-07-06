@@ -89,7 +89,6 @@ do ($ = window.jQuery, window) ->
       @prevOptions = $.extend(true, {}, @options)
 
     state: (value, skip, force) ->
-      console.log force
       return @options.state  if typeof value is "undefined"
       return @$element  if (@options.disabled or @options.readonly) and !force
       return @$element  if @options.state and not @options.radioAllOff and @$element.is ":radio"
